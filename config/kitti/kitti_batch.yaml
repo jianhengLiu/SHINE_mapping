@@ -2,7 +2,6 @@ setting:
   name: "kitti_batch"
   output_root: "./experiments/"
   pc_path: "xxx/data/kitti/sequences/00/velodyne"
-  label_path: "xxx/data/kitti/sequences/00/labels" # optional for semantic mapping
   pose_path: "xxx/data/kitti/sequences/00/poses.txt"
   calib_path: "xxx/data/kitti/sequences/00/calib.txt"
   load_model: False
@@ -23,7 +22,7 @@ sampler:
   surface_sample_range_m: 0.3
   surface_sample_n: 3
   free_sample_begin_ratio: 0.3
-  free_sample_end_dist_m: 0.8
+  free_sample_end_dist: 0.8
   free_sample_n: 3
 octree:
   leaf_vox_size: 0.2
@@ -45,10 +44,8 @@ loss:
   ekional_loss_on: False
   weight_e: 0.1
 continual:
-  continual_learning_reg: False # using incremental mapping with regularization
-  lambda_forget: 0 # the larger this value, the model would be less likely to forget
-  window_replay_on: False # replay within the sliding window
-  window_radius_m: 0
+  continual_learning_reg: False
+  lambda_forget: 0
 optimizer:
   iters: 20000
   batch_size: 4096

@@ -6,7 +6,7 @@ import torch.nn as nn
 def sdf_diff_loss(pred, label, weight, scale, l2_loss=True):
     count = pred.shape[0]
     diff = pred - label
-    diff_m = diff / scale # so it's still in m unit
+    diff_m = diff / scale
     if l2_loss:
         loss = (weight * (diff_m**2)).sum() / count  # l2 loss
     else:

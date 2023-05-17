@@ -12,14 +12,13 @@
   </p>
   <p align="center"><a href="https://www.ipb.uni-bonn.de"><strong>University of Bonn</strong></a>
   <p align="center">(* Equal Contribution)</p>
-  <h3 align="center"><a href="https://arxiv.org/abs/2210.02299">Arxiv</a> | <a href="https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/zhong2023icra.pdf">Paper</a> | <a href="https://youtu.be/jRqIupJgQZE">Video</a></h3>
+  <h3 align="center"><a href="https://arxiv.org/abs/2210.02299">Arxiv Preprint</a> | <a href="">Video</a></h3>
   <div align="center"></div>
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235914656-c56cd71f-1b31-44f7-a60d-3de4d77d76b6.png" width="100%" />
+  <img src="https://user-images.githubusercontent.com/8968747/219639320-d595ebb9-030a-41a4-81e2-8ab6cc4efef8.png" width="90%" />
 </p>
-
 
 Incremental Mapping | Reconstruction Results |
 :-: | :-: |
@@ -227,17 +226,17 @@ For the sake of efficiency, we sacrifice a bit mapping quality to use a 50cm lea
 
 </details>
 
-For incremental mapping with replay strategy (within a local bounding box), use:
+For incremental mapping with replay strategy, use:
 ```
 python shine_incre.py ./config/maicity/maicity_incre_replay.yaml
 ```
 
-An interactive visualizer would pop up if you set `o3d_vis_on: True` (by default) in the config file. You can press `space` to pause and resume. 
+An interactive visualizer would pop up. You can press `space` to pause and resume.
 
 <details>
   <summary>[Expected results (click to expand)]</summary>
 
-For the sake of efficiency, we sacrifice a bit mapping quality to use a 50cm leaf voxel size for the feature octree here.
+For the sake of efficiency, we sacrifice a bit mapping quality to use a 50cm leaf voxel size for the feature octree.
 
 <p align="center">
   <video src="https://user-images.githubusercontent.com/34207278/207639846-4f80e55c-7574-45a5-9987-9c7ec6eb20e5.mp4" width="50%" />
@@ -255,19 +254,19 @@ For the sake of efficiency, we sacrifice a bit mapping quality to use a 50cm lea
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235924403-1d1157f5-26c4-443e-b3dc-c87ee13c3e61.gif" width="70%" />
+  <img src="https://user-images.githubusercontent.com/34207278/217082027-efe272bb-ff6e-49b3-bb69-6d0a32c64a45.png" width="70%" />
 </p>
 
 **Newer College**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235925883-55a8230e-69b6-4ce0-a6c7-1f143de74504.gif" width="70%" />
+  <img src="https://user-images.githubusercontent.com/34207278/206719372-477f1a90-e2b1-44ac-a56e-22e8e5810147.png" width="70%" />
 </p>
 
 **Apollo**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235922691-d4e8cc0e-b85f-4542-9eaf-821bf26cc966.png" width="70%" />
+  <img src="https://user-images.githubusercontent.com/34207278/212333973-ad1a0c14-550f-4266-902f-08c33f9f79c1.png" width="70%" />
 </p>
 
 
@@ -284,16 +283,16 @@ For the sake of efficiency, we sacrifice a bit mapping quality to use a 50cm lea
   <img src="https://user-images.githubusercontent.com/34207278/216360654-9b0a8bda-6a98-4db1-aa25-1c58080a4585.png" width="70%" />
 </p>
 
-**Replica**
-
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235925819-bc30934f-8df0-465c-b157-d2702022d06e.gif" width="70%" />
-</p>
-
 **ICL Living Room**
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/34207278/235922527-a39f6e1c-443b-462e-842d-f33e0e5716be.png" width="70%" />
+  <img src="https://user-images.githubusercontent.com/34207278/206718688-a8bfb786-6439-435b-a225-c596aef9ab64.png" width="70%" />
+</p>
+
+**Replica**
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/34207278/217082679-319d220a-de1f-4f30-ac14-438b4fe8942a.png" width="70%" />
 </p>
 
 
@@ -320,26 +319,22 @@ As mentioned in the paper, we also compute a fairer accuracy metric using the gr
 <details>
   <summary>[Details (click to expand)]</summary>
 
-1. You can play with different loss functions for SHINE Mapping. With the `ray_loss: False` option, the loss would be calculated from the sdf at each sample point. In this case, you can then select from `sdf_bce` (the proposed method), `sdf_l1` and  `sdf_l2` loss as the `main_loss_type`. With the `ray_loss: True` option, the loss would be calculated from each ray conatining multiple point samples as a depth rendering procedure. In this case,  you can select from `dr` and `dr_neus` as the `main_loss_type`. According to our experiments, using our proposed `sdf_bce` loss can achieve the best reconstruction efficiently. We can get a decent reconstruction of a scene with several hundred frames in just one minute. Additionally, you can use the `ekional_loss_on` option to turn on/off the Ekional loss and use `weight_e` as its weight.
+1. You can play with different loss functions for SHINE Mapping. With the `ray_loss: False` option, the loss would be calculated from the sdf at each sample point. In this case, you can then select from `sdf_bce` (the proposed method), `sdf_l1` and  `sdf_l2` loss as the `main_loss_type`. With the `ray_loss: True` option, the loss would be calculated from each ray conatining multiple point samples as a depth rendering procedure. In this case,  you can select from `dr` and `dr_neus` as the `main_loss_type`. According to our experiments, using our proposed `sdf_bce` loss can achieve the best reconstruction efficiently. We can get a decent reconstruction of a scene with several hundred frames in just one minute. Additionally, you can set `ekional_loss_on` option to turn on/off the Ekional loss and use `weight_e` as its weight.
 
 2. The feature octree is built mainly according to `leaf_vox_size`, `tree_level_world` and `tree_level_feat`. `leaf_vox_size` represents the size of the leaf voxel size in meter. `tree_level_world` and `tree_level_feat` represent the total tree level and the tree levels with latent feature codes, respectively. `tree_level_world` should be large enough to gurantee all the map data lies inside the cube with the size `leaf_vox_size**(tree_level_world+1)`.
 
 3. SHINE Mapping supports both the offline batch mapping and the incremental sequential mapping. For incremental mapping, one can either load a fixed pre-trained decoder from the batching mapping on a similar dataset (set `load_model: True`) or train the decoder for `freeze_after_frame` frames on-the-fly and then freeze it afterwards (set `load_model: False`). The first option would lead to better mapping performance.
 
-4. You can use the `mc_vis_level` parameter to have a trade-off between the scene completion and the exact measurement accuracy. This parameter indicate at which level of the octree the marching cubes reconstruction would be conducted. The larger the value of `mc_vis_level` (but not larger than `tree_level_feat`), the more scene completion ability you would gain (but also some artifacts such as a double wall may appear). And with the small value, SHINE mapping would only reconstruct the part with actual measurements without filling the holes. The safest way to avoid the holes on the ground is to set `mc_mask_on: False` to disable the masking for marching cubes. By turning on the `mc_with_octree` option, you can achieve a faster marching cubes reconstruction only in the region within the octree nodes. 
+4. You can use the `mc_vis_level` parameter to have a trade-off between the scene completion and the exact measurement accuracy. This parameter indicate at which level of the octree the marching cubes reconstruction would be conducted. The larger the value of `mc_vis_level` (but not larger than `tree_level_feat`), the more scene completion ability you would gain (but also some artifacts such as a double wall may appear). And with the small value, SHINE mapping would only reconstruct the part with actual measurements without filling the holes. The safest way to avoid the holes on the ground is to set `mc_mask_on: False` to disable the masking for marching cubes.
 
-5. The incremental mapping with regularization strategy (setting `continual_learning_reg: True`) can achieve incremental neural mapping without storing an ever-growing data pool which would be a burden for the memory. The coefficient `lambda_forget` needs to be fine-tuned under different feature octree and point sampling settings. The recommended value is from `1e5` to `1e8`. A pre-trained decoder is also recommended to be loaded during incremental mapping with regularization for better performance. 
-
-6. We also provide an option to conduct incremental mapping with replay strategy in a local sliding window. You can turn this on by setting `window_replay_on: True` with a valid `window_radius_m` indicating the size of the sliding window.
-
-7. It's also possible to incoporate semantic information in our SHINE-Mapping framework. You may set `semantic_on = True` in the `utils/config.py` file to enable semantic mapping and also provide the semantic supervision by setting the `label_path` in the config file.
+5. The incremental mapping with regularization strategy (setting `continual_learning_reg: True`) can achieve incremental neural mapping without storing an ever-growing data pool which would be a burden for the memory. The coefficient `lambda_forget` needs to be fine-tuned under different feature octree and point sampling settings. The recommended value is from `1e5` to `1e8`. A pre-trained decoder is also recommended to be loaded during incremental mapping with regularization for better performance.
 
 </details>
 
 ----
 
 ## Citation
-If you use SHINE Mapping for any academic work, please cite our [original paper](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/zhong2023icra.pdf).
+If you use SHINE Mapping for any academic work, please cite our original paper.
 ```
 @inproceedings{zhong2023icra,
   title={SHINE-Mapping: Large-Scale 3D Mapping Using Sparse Hierarchical Implicit NEural Representations},
@@ -358,7 +353,7 @@ If you have any questions, please contact:
 ## Acknowledgment
 This work has partially been funded by the European Union’s HORIZON programme under grant agreement No 101070405 (DigiForest) and grant agreement No 101017008 (Harmony).
 
-Additional, we thank greatly for the authors of the following opensource projects:
+Additional, we thanks greatly for the authors of the following opensource projects:
 
 - [NGLOD](https://github.com/nv-tlabs/nglod) (octree based hierarchical feature structure built based on [kaolin](https://kaolin.readthedocs.io/en/latest/index.html)) 
 - [VDBFusion](https://github.com/PRBonn/vdbfusion) (comparison baseline)

@@ -1,15 +1,14 @@
 setting:
   name: "kitti_incre_reg"
   output_root: "./experiments/"
-  pc_path: "xxx/data/kitti/sequences/00/velodyne"
-  label_path: "xxx/data/kitti/sequences/00/labels" # optional for semantic mapping
-  pose_path: "xxx/data/kitti/sequences/00/poses.txt"
-  calib_path: "xxx/data/kitti/sequences/00/calib.txt"
+  pc_path: "/media/nrosliu/T7/kitti/dataset/sequences/00/velodyne"
+  pose_path: "./data/kitti/sequences/00/poses.txt"
+  calib_path: "./data/kitti/sequences/00/calib.txt"
   load_model: False
   model_path: "" 
   first_frame_ref: False
   begin_frame: 0
-  end_frame: 100
+  end_frame: 4541
   every_frame: 1 # 1 means does not skip
   device: "cuda"
   gpu_id: "0"
@@ -23,7 +22,7 @@ sampler:
   surface_sample_range_m: 0.5
   surface_sample_n: 3
   free_sample_begin_ratio: 0.3
-  free_sample_end_dist_m: 1.0
+  free_sample_end_dist: 1.0
   free_sample_n: 3
 octree:
   leaf_vox_size: 0.2
@@ -45,10 +44,8 @@ loss:
   ekional_loss_on: False
   weight_e: 0.1
 continual:
-  continual_learning_reg: True # using incremental mapping with regularization
+  continual_learning_reg: True
   lambda_forget: 1e4 # the larger this value, the model would be less likely to forget
-  window_replay_on: False # replay within the sliding window
-  window_radius_m: 0
 optimizer:
   iters: 50  # iterations per frame
   batch_size: 4096
@@ -59,8 +56,8 @@ eval:
   o3d_vis_on: True # visualize the mapping or not
   vis_freq_iters: 0 
   save_freq_iters: 10000 # save the model and octree every x iterations
-  mesh_freq_frame: 5 # reconstruct the mesh every x frames
+  mesh_freq_frame: 10 # reconstruct the mesh every x frames
   mc_res_m: 0.1 # reconstruction marching cubes resolution
   mc_with_octree: True # querying sdf only in certain levels of the octree
-  mc_vis_level: 1
+  mc_vis_level: 2
   save_map: False # save the sdf map or not 

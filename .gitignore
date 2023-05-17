@@ -6,5 +6,6 @@ __pycache__/
 *.ply
 *.bin
 *.pth
-./experiments/
-./data/
+**/experiments/**
+**/data/**
+config/rgbd/replica_reg.yaml
