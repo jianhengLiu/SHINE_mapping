@@ -99,6 +99,11 @@ class LiDARDataset(Dataset):
         else:
             self.pool_device = config.device
             self.to_cpu = False
+        
+        self.pool_device = "cpu"
+        self.to_cpu = True
+        self.sampler.dev = "cpu"
+        print("too many scans, use cpu memory")
 
         # data pool
         self.coord_pool = torch.empty((0, 3), device=self.pool_device, dtype=self.dtype)
